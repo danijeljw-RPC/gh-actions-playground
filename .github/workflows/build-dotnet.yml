@@ -20,21 +20,25 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Setup .Net Core
-        uses: actions/setup-dotnet@v1
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 6.x
+          dotnet-version: |
+            3.1.x
+            5.0.x
+            6.0.x
+          include-prerelease: true
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
       - name: download gh project
-        run: |
-          git clone -q --branch=main https://github.com/danijeljw-RPC/optechx.DownloadFile.git .\optechx.DownloadFile
-          dotnet restore .\optechx.DownloadFile\optechx.DownloadFile\optechx.DownloadFile.csproj
-          msbuild .\optechx.DownloadFile\optechx.DownloadFile.sln -t:rebuild -verbosity:minimal -property:Configuration=Release
+        run: git clone -q --branch=main https://github.com/danijeljw-RPC/optechx.DownloadFile.git .
+      - name: Build local projects
+          dotnet restore .\optechx.DownloadFile\optechx.DownloadFile.csproj
+          msbuild .\optechx.DownloadFile.sln -t:rebuild -verbosity:minimal -property:Configuration=Release
       - name: create odf
         run: |
           mkdir -p C:\odf
-          Get-ChildItem -Path .\optechx.DownloadFile\optechx.DownloadFile\ -Recurse
+          Get-ChildItem -Path .\optechx.DownloadFile\ -Recurse
 
 
   ubuntu-tasks:
