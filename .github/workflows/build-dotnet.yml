@@ -23,7 +23,7 @@ jobs:
       - name: Setup .Net Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 2.2
+          dotnet-version: 6.x
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
       - name: download gh project
@@ -34,9 +34,8 @@ jobs:
       - name: create odf
         run: |
           mkdir -p C:\odf
-          Copy-Item -Path .\optechx.DownloadFile\optechx.DownloadFile\obj\Release\netcoreapp2.2\* C:\odf
-      - name: Test ODF
-        run: dotnet C:\odf\optechx.DownloadFile.dll
+          Get-ChildItem -Path .\optechx.DownloadFile\optechx.DownloadFile\ -Recurse
+
 
   ubuntu-tasks:
     # The type of runner that the job will run on
