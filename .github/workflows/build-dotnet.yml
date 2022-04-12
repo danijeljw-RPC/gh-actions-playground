@@ -41,8 +41,7 @@ jobs:
         run: |
           mkdir -p C:\odf
           Copy-Item -Path D:\a\gh-actions-playground\gh-actions-playground\dlfile\optechx.DownloadFile\bin\Release\netcoreapp2.2\* -Destination C:\odf\ -Recurse
-          $env:PATH += ';C:\odf'
-          dotnet optechx.DownloadFile.dll
+          dotnet C:\odf\optechx.DownloadFile.dll
 #          dotnet D:\a\gh-actions-playground\gh-actions-playground\dlfile\optechx.DownloadFile\bin\Release\netcoreapp2.2\optechx.DownloadFile.dll
 
 
