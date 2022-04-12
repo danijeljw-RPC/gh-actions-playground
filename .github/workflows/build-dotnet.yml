@@ -30,14 +30,13 @@ jobs:
         run: |
           git clone -q --branch=main https://github.com/danijeljw-RPC/optechx.DownloadFile.git .\optechx.DownloadFile
           dotnet restore .\optechx.DownloadFile\optechx.DownloadFile\optechx.DownloadFile.csproj
-          msbuild .\optechx.DownloadFile\optechx.DownloadFile.sln -t:rebuild -verbosity:diag -property:Configuration=Release
+          msbuild .\optechx.DownloadFile\optechx.DownloadFile.sln -t:rebuild -verbosity:minimal -property:Configuration=Release
       - name: create odf
         run: |
           mkdir -p C:\odf
           Copy-Item -Path .\optechx.DownloadFile\optechx.DownloadFile\obj\Release\netcoreapp2.2\* C:\odf
-          $env:PATH += ';C:\odf'
       - name: Test ODF
-        run: dotnet optechx.DownloadFile.dll
+        run: dotnet C:\odf\optechx.DownloadFile.dll
 
   ubuntu-tasks:
     # The type of runner that the job will run on
