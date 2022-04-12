@@ -34,12 +34,12 @@ jobs:
         run: git clone -q --branch=main https://github.com/danijeljw-RPC/optechx.DownloadFile.git .\dlfile
       - name: Build local projects
         run: |
-          dotnet restore .\optechx.DownloadFile\optechx.DownloadFile.csproj
-          msbuild .\optechx.DownloadFile.sln -t:rebuild -verbosity:minimal -property:Configuration=Release
+          dotnet restore .\dlfile\optechx.DownloadFile\optechx.DownloadFile.csproj
+          msbuild .\dlfile\optechx.DownloadFile.sln -t:rebuild -verbosity:minimal -property:Configuration=Release
       - name: create odf
         run: |
           mkdir -p C:\odf
-          Get-ChildItem -Path .\optechx.DownloadFile\ -Recurse
+          Get-ChildItem -Path .\dlfile\optechx.DownloadFile\ -Recurse
 
 
   ubuntu-tasks:
