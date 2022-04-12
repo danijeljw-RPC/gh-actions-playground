@@ -30,8 +30,9 @@ jobs:
         run: |
           git clone -q --branch=main https://github.com/danijeljw-RPC/optechx.DownloadFile.git .\optechx.DownloadFile
           dotnet restore .\optechx.DownloadFile\optechx.DownloadFile\optechx.DownloadFile.csproj
-          msbuild .\optechx.DownloadFile\optechx.DownloadFile.sln /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll" /property:Configuration=Release
+          msbuild .\optechx.DownloadFile\optechx.DownloadFile.sln -t:rebuild -verbosity:diag -property:Configuration=Release
           Get-ChildItem -Path . -Recurse
+
   ubuntu-tasks:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
