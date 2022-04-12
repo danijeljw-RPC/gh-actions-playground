@@ -39,7 +39,7 @@ jobs:
       - name: create odf
         run: |
           mkdir -p C:\odf
-          Get-ChildItem -Path .\dlfile\optechx.DownloadFile\ -Recurse
+          dotnet D:\a\gh-actions-playground\gh-actions-playground\dlfile\optechx.DownloadFile\bin\Release\netcoreapp2.2\optechx.DownloadFile.dll
 
 
   ubuntu-tasks:
