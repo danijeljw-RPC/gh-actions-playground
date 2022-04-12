@@ -31,8 +31,9 @@ jobs:
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
       - name: download gh project
-        run: git clone -q --branch=main https://github.com/danijeljw-RPC/optechx.DownloadFile.git .
+        run: git clone -q --branch=main https://github.com/danijeljw-RPC/optechx.DownloadFile.git .\
       - name: Build local projects
+        run: |
           dotnet restore .\optechx.DownloadFile\optechx.DownloadFile.csproj
           msbuild .\optechx.DownloadFile.sln -t:rebuild -verbosity:minimal -property:Configuration=Release
       - name: create odf
