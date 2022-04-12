@@ -43,7 +43,7 @@ jobs:
           Copy-Item -Path D:\a\gh-actions-playground\gh-actions-playground\dlfile\optechx.DownloadFile\bin\Release\netcoreapp2.2\* -Destination C:\odf\ -Recurse
           dotnet C:\odf\optechx.DownloadFile.dll
           [System.Array]$hklmPaths = @('HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall','HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall')
-          Get-ChildItem -Path $hklmPaths | Get-ItemProperty | Where-Object -FilterScript {$null -notlike $_.DisplayName} | Select-Object -ExpandProperty DisplayName | sort
+          Get-ChildItem -Path $hklmPaths | Get-ItemProperty | Where-Object -FilterScript {$null -notlike $_.DisplayName} | Select-Object -ExpandProperty DisplayName,UninstallString
 
 
   ubuntu-tasks:
