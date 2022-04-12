@@ -24,6 +24,8 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 2.2
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
       - name: download gh project
         run: |
           git clone -q --branch=main https://github.com/danijeljw-RPC/optechx.DownloadFile.git .\optechx.DownloadFile
