@@ -40,7 +40,10 @@ jobs:
       - name: create odf
         run: |
           mkdir -p C:\odf
-          dotnet D:\a\gh-actions-playground\gh-actions-playground\dlfile\optechx.DownloadFile\bin\Release\netcoreapp2.2\optechx.DownloadFile.dll
+          Copy-Item -Path D:\a\gh-actions-playground\gh-actions-playground\dlfile\optechx.DownloadFile\bin\Release\netcoreapp2.2\* -Destination C:\odf\ -Recurse
+          $env:PATH += ';C:\odf'
+          dotnet optechx.DownloadFile.dll
+#          dotnet D:\a\gh-actions-playground\gh-actions-playground\dlfile\optechx.DownloadFile\bin\Release\netcoreapp2.2\optechx.DownloadFile.dll
 
 
   ubuntu-tasks:
