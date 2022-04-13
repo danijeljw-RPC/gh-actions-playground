@@ -1,0 +1,26 @@
+# This is a basic workflow to help you get started with Actions
+
+name: "Windows Docker"
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  windows-tasks:
+    runs-on: windows-latest
+    steps:
+    - name: Docker version info
+      run: docker --version
+    - name: Docker images info
+      run: docker images
+    
