@@ -21,6 +21,8 @@ jobs:
     steps:
     - name: Docker version info
       run: docker --version
+    - name: Remove docker images
+      run: docker rmi 404cab87d001
     - name: Docker images info
       run: docker images
     
